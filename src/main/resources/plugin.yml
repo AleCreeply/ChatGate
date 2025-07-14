@@ -2,3 +2,15 @@ name: ChatGate
 version: '1.0'
 main: it.AleCreeply.chatGate.ChatGate
 api-version: '1.21'
+author: 'AleCreeply'
+commands:
+  chat:
+    aliases: [c]
+    description: To do
+    usage: /chat <name> [message]
+  chatgate:
+    description: To do
+    usage: /chatgate
+    permission: chatgate.reload
+    aliases:
+      - cg

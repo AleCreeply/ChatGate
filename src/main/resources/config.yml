@@ -1,0 +1,35 @@
+#
+#     ██████╗██╗  ██╗ █████╗ ████████╗ ██████╗  █████╗ ████████╗███████╗
+#    ██╔════╝██║  ██║██╔══██╗╚══██╔══╝██╔════╝ ██╔══██╗╚══██╔══╝██╔════╝
+#    ██║     ███████║███████║   ██║   ██║  ███╗███████║   ██║   █████╗
+#    ██║     ██╔══██║██╔══██║   ██║   ██║   ██║██╔══██║   ██║   ██╔══╝
+#    ╚██████╗██║  ██║██║  ██║   ██║   ╚██████╔╝██║  ██║   ██║   ███████╗
+#    ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
+#
+
+version: 1.0
+
+chats:
+  myfirstchat:
+    format: "&a&lFIRST CHAT &8&l| &7%player% &8: &7%message%"
+    display-name: "First Chat"
+  mysecondchat:
+    format: "&a&lSECOND CHAT &8&l| &7%player% &8: &7%message%"
+    display-name: "Second Chat"
+
+messages:
+  prefix: "&7[&dChatGate&7]"
+
+  no-permission: "%prefix% &cYou don't have permission"
+  chat-not-found: "%prefix% &cThe &f%chat% &cchat does not exist"
+  unknown-subcommand: "%prefix% &cUnknown subcommand. Use /chatgate help"
+  usage: "%prefix% &cCorrect usage: /chat <chat> [message]"
+
+  chat-enabled: "%prefix% &aYou have successfully enabled &f%chat% &achat"
+  chat-disabled: "%prefix% &cYou have successfully disabled &f%chat% &cchat"
+
+# --------------------
+#       To do
+# --------------------
+# save-toggle-on-logout: true
+# enable-placeholder-api: true
