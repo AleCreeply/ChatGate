@@ -56,16 +56,6 @@ public class chatManager {
         }
     }
 
-    public String getActiveChatId(Player player) {
-        return toggledChats.get(player.getUniqueId());
-    }
-
-    public String getActiveChatDisplayName(Player player) {
-        customChat chat = getToggledChat(player);
-        if (chat == null) return "Nessuna";
-        return colorManager.color(chat.getDisplayName());
-    }
-
     public void removeToggled(Player player) {
         toggledChats.remove(player.getUniqueId());
     }

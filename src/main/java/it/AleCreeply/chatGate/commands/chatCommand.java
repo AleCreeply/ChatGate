@@ -33,7 +33,10 @@ public class chatCommand implements CommandExecutor, TabCompleter {
 
         customChat chat = ChatGate.getInstance().getChats().get(chatId);
         if (chat == null) {
-            player.sendMessage(messageManager.getMessage("chat-not-found"));
+            Map<String, String> placeholders = new HashMap<>();
+            placeholders.put("%chat%", chat.getDisplayName());
+            String msg = messageManager.getMessage("chat-not-found", placeholders);
+            player.sendMessage(msg);
             return true;
         }
 

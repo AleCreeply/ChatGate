@@ -1,6 +1,8 @@
 package it.AleCreeply.chatGate.placeholders;
 
 import it.AleCreeply.chatGate.managers.chatManager;
+import it.AleCreeply.chatGate.models.customChat;
+import it.AleCreeply.chatGate.managers.colorManager;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
@@ -38,7 +40,9 @@ public class placeholderapiExpansion extends PlaceholderExpansion {
         if (player == null) return "";
 
         if (identifier.equalsIgnoreCase("chat_displayname")) {
-            String chat = chatManager.getInstance().getActiveChatDisplayName(player);
+            customChat chat = chatManager.getInstance().getToggledChat(player);
+
+            return colorManager.color(chat.getDisplayName());
         }
         return null;
     }

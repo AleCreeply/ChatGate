@@ -7,6 +7,7 @@ import it.AleCreeply.chatGate.models.customChat;
 import it.AleCreeply.chatGate.commands.chatCommand;
 import it.AleCreeply.chatGate.listeners.chatListener;
 import it.AleCreeply.chatGate.placeholders.placeholderapiExpansion;
+import it.AleCreeply.chatGate.commands.chatGateCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,7 @@ public final class ChatGate extends JavaPlugin {
 
         getCommand("chat").setExecutor(new chatCommand());
         getCommand("chat").setTabCompleter(new chatCommand());
-        getCommand("chatgate").setExecutor(new chatCommand());
+        getCommand("chatgate").setExecutor(new chatGateCommand());
 
         getServer().getPluginManager().registerEvents(new chatListener(), this);
 
