@@ -1,0 +1,4 @@
+name: ChatGate
+version: '1.0'
+main: it.AleCreeply.chatGate.ChatGate
+api-version: '1.21'
