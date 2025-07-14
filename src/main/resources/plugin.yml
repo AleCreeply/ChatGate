@@ -5,8 +5,11 @@ api-version: '1.21'
 author: 'AleCreeply'
 softdepend: [PlaceholderAPI]
 description: >
-  ChatGate è un plugin che permette di creare chat personalizzate
-  basate su permessi, con supporto HEX, PlaceholderAPI e tanto altro.
+  ChatGate is a powerful and customizable chat manager plugin that allows server admins 
+  to create multiple permission-based chat channels with support for HEX colors, 
+  PlaceholderAPI, and toggleable chat modes. Easily configure chat formats, names, 
+  permissions, and messages through the config.yml. 
+  Perfect for roleplay servers, staff chats, VIP-only channels and more.
 commands:
   chat:
     aliases: [c]

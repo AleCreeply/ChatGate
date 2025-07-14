@@ -28,6 +28,9 @@ messages:
   chat-enabled: "%prefix% &aYou have successfully enabled &f%chat% &achat"
   chat-disabled: "%prefix% &cYou have successfully disabled &f%chat% &cchat"
 
+settings:
+  log-chat: true
+
 # --------------------
 #       To do
 # --------------------

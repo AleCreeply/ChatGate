@@ -2,6 +2,7 @@ package it.AleCreeply.chatGate.managers;
 
 import it.AleCreeply.chatGate.ChatGate;
 import org.bukkit.ChatColor;
+import it.AleCreeply.chatGate.managers.colorManager;
 
 import java.util.Map;
 

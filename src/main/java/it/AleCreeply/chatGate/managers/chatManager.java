@@ -2,7 +2,6 @@ package it.AleCreeply.chatGate.managers;
 
 import it.AleCreeply.chatGate.models.customChat;
 import it.AleCreeply.chatGate.ChatGate;
-import org.bukkit.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -53,6 +52,13 @@ public class chatManager {
             if (target.hasPermission("chatgate.chats." + chat.getId())) {
                 target.sendMessage(formatted);
             }
+        }
+
+        if (ChatGate.getInstance().getConfig().getBoolean("settings.log-chat")) {
+            String cleanLog = "[" + chat.getDisplayName().replaceAll("§.", "") + "] "
+                    + sender.getName() + ": " + message;
+
+            Bukkit.getLogger().info(cleanLog);
         }
     }
 
