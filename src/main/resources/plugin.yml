@@ -3,6 +3,10 @@ version: '1.0'
 main: it.AleCreeply.chatGate.ChatGate
 api-version: '1.21'
 author: 'AleCreeply'
+softdepend: [PlaceholderAPI]
+description: >
+  ChatGate è un plugin che permette di creare chat personalizzate
+  basate su permessi, con supporto HEX, PlaceholderAPI e tanto altro.
 commands:
   chat:
     aliases: [c]

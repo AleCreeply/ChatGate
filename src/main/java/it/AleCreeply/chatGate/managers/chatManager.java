@@ -45,7 +45,7 @@ public class chatManager {
     }
 
     public void sendChatMessage(customChat chat, Player sender, String message) {
-        String formatted = ChatColor.translateAlternateColorCodes('&', chat.getFormat())
+        String formatted = colorManager.color(chat.getFormat())
                 .replace("%player%", sender.getName())
                 .replace("%message%", message);
 

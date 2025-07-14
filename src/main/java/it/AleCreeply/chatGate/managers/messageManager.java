@@ -1,4 +1,4 @@
-package it.AleCreeply.chatGate.listeners;
+package it.AleCreeply.chatGate.managers;
 
 import it.AleCreeply.chatGate.ChatGate;
 import org.bukkit.ChatColor;

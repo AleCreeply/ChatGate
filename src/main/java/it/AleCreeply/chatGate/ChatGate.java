@@ -23,6 +23,7 @@ public final class ChatGate extends JavaPlugin {
 
         getCommand("chat").setExecutor(new chatCommand());
         getCommand("chat").setTabCompleter(new chatCommand());
+        getCommand("chatgate").setExecutor(new chatCommand());
 
         getServer().getPluginManager().registerEvents(new chatListener(), this);
     }

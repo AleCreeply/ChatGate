@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import it.AleCreeply.chatGate.models.customChat;
-import it.AleCreeply.chatGate.listeners.messageManager;
+import it.AleCreeply.chatGate.managers.messageManager;
 import it.AleCreeply.chatGate.managers.chatManager;
 import org.bukkit.entity.Player;
 
