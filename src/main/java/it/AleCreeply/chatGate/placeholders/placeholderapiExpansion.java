@@ -42,6 +42,8 @@ public class placeholderapiExpansion extends PlaceholderExpansion {
         if (identifier.equalsIgnoreCase("chat_displayname")) {
             customChat chat = chatManager.getInstance().getToggledChat(player);
 
+            if (chat == null) return "Nessuna";
+
             return colorManager.color(chat.getDisplayName());
         }
         return null;

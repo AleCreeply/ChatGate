@@ -19,7 +19,7 @@ public final class ChatGate extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Plugin enabled");
+        long start = System.currentTimeMillis();
         instance = this;
         saveDefaultConfig();
         loadChats();
@@ -36,6 +36,9 @@ public final class ChatGate extends JavaPlugin {
         } else {
             getLogger().warning("Placeholder hook not registered");
         }
+
+        long elapsed = System.currentTimeMillis() - start;
+        getLogger().info("Plugin enabled in " + elapsed);
     }
 
     public void loadChats(){
