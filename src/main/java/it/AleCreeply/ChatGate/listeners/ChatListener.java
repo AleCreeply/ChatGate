@@ -1,16 +1,16 @@
-package it.AleCreeply.chatGate.listeners;
+package it.AleCreeply.ChatGate.listeners;
 
-import it.AleCreeply.chatGate.managers.chatManager;
-import it.AleCreeply.chatGate.models.customChat;
+import it.AleCreeply.ChatGate.managers.ChatManager;
+import it.AleCreeply.ChatGate.models.CustomChat;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class chatListener implements Listener {
+public class ChatListener implements Listener {
 
-    private final chatManager ChatManager = chatManager.getInstance();
+    private final ChatManager ChatManager = it.AleCreeply.ChatGate.managers.ChatManager.getInstance();
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
@@ -18,7 +18,7 @@ public class chatListener implements Listener {
 
         if (!ChatManager.hasToggledChat(player)) return;
 
-        customChat chat = ChatManager.getToggledChat(player);
+        CustomChat chat = ChatManager.getToggledChat(player);
 
         if (chat == null) return;
 
@@ -26,11 +26,11 @@ public class chatListener implements Listener {
 
         String message = event.getMessage();
 
-        chatManager.getInstance().sendChatMessage(chat, player, message);
+        it.AleCreeply.ChatGate.managers.ChatManager.getInstance().sendChatMessage(chat, player, message);
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        chatManager.getInstance().removeToggled(event.getPlayer());
+        it.AleCreeply.ChatGate.managers.ChatManager.getInstance().removeToggled(event.getPlayer());
     }
 }

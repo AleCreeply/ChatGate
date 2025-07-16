@@ -1,14 +1,14 @@
-package it.AleCreeply.chatGate.placeholders;
+package it.AleCreeply.ChatGate.placeholders;
 
-import it.AleCreeply.chatGate.managers.chatManager;
-import it.AleCreeply.chatGate.models.customChat;
-import it.AleCreeply.chatGate.managers.colorManager;
+import it.AleCreeply.ChatGate.managers.ChatManager;
+import it.AleCreeply.ChatGate.models.CustomChat;
+import it.AleCreeply.ChatGate.managers.ColorManager;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class placeholderapiExpansion extends PlaceholderExpansion {
+public class PlaceholderapiExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getIdentifier() {
@@ -40,11 +40,11 @@ public class placeholderapiExpansion extends PlaceholderExpansion {
         if (player == null) return "";
 
         if (identifier.equalsIgnoreCase("chat_displayname")) {
-            customChat chat = chatManager.getInstance().getToggledChat(player);
+            CustomChat chat = ChatManager.getInstance().getToggledChat(player);
 
             if (chat == null) return "Nessuna";
 
-            return colorManager.color(chat.getDisplayName());
+            return ColorManager.color(chat.getDisplayName());
         }
         return null;
     }

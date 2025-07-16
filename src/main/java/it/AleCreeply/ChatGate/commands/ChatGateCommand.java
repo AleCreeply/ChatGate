@@ -1,6 +1,6 @@
-package it.AleCreeply.chatGate.commands;
+package it.AleCreeply.ChatGate.commands;
 
-import it.AleCreeply.chatGate.ChatGate;
+import it.AleCreeply.ChatGate.ChatGate;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class chatGateCommand implements CommandExecutor, TabCompleter {
+public class ChatGateCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

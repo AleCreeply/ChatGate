@@ -1,6 +1,6 @@
 name: ChatGate
 version: '1.0'
-main: it.AleCreeply.chatGate.ChatGate
+main: it.AleCreeply.ChatGate.ChatGate
 api-version: '1.21'
 author: 'AleCreeply'
 softdepend: [PlaceholderAPI]

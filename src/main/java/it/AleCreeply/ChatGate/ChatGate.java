@@ -1,13 +1,13 @@
-package it.AleCreeply.chatGate;
+package it.AleCreeply.ChatGate;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
-import it.AleCreeply.chatGate.models.customChat;
-import it.AleCreeply.chatGate.commands.chatCommand;
-import it.AleCreeply.chatGate.listeners.chatListener;
-import it.AleCreeply.chatGate.placeholders.placeholderapiExpansion;
-import it.AleCreeply.chatGate.commands.chatGateCommand;
+import it.AleCreeply.ChatGate.models.CustomChat;
+import it.AleCreeply.ChatGate.commands.ChatCommand;
+import it.AleCreeply.ChatGate.listeners.ChatListener;
+import it.AleCreeply.ChatGate.placeholders.PlaceholderapiExpansion;
+import it.AleCreeply.ChatGate.commands.ChatGateCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import java.util.Map;
 public final class ChatGate extends JavaPlugin {
 
     private static ChatGate instance;
-    private final Map<String, customChat> chats = new HashMap<>();
+    private final Map<String, CustomChat> chats = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -24,15 +24,15 @@ public final class ChatGate extends JavaPlugin {
         saveDefaultConfig();
         loadChats();
 
-        getCommand("chat").setExecutor(new chatCommand());
-        getCommand("chat").setTabCompleter(new chatCommand());
-        getCommand("chatgate").setExecutor(new chatGateCommand());
-        getCommand("chatgate").setTabCompleter(new chatGateCommand());
+        getCommand("chat").setExecutor(new ChatCommand());
+        getCommand("chat").setTabCompleter(new ChatCommand());
+        getCommand("chatgate").setExecutor(new ChatGateCommand());
+        getCommand("chatgate").setTabCompleter(new ChatGateCommand());
 
-        getServer().getPluginManager().registerEvents(new chatListener(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            new placeholderapiExpansion().register();
+            new PlaceholderapiExpansion().register();
             getLogger().info("PlaceholderAPI hook registered");
         } else {
             getLogger().warning("Placeholder hook not registered");
@@ -52,12 +52,12 @@ public final class ChatGate extends JavaPlugin {
                 String format = section.getString(key + ".format");
                 String displayname = section.getString(key + ".display-name");
 
-                chats.put(key.toLowerCase(), new customChat(key, format, displayname));
+                chats.put(key.toLowerCase(), new CustomChat(key, format, displayname));
             }
         }
     }
 
-    public Map<String, customChat> getChats() {
+    public Map<String, CustomChat> getChats() {
         return chats;
     }
 

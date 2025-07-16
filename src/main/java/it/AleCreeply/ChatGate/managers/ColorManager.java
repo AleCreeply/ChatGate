@@ -1,11 +1,9 @@
-package it.AleCreeply.chatGate.managers;
-
-import org.bukkit.ChatColor;
+package it.AleCreeply.ChatGate.managers;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class colorManager {
+public class ColorManager {
 
     private static final Pattern HEX_PATTERN = Pattern.compile("&#([A-Fa-f0-9]{6})");
 

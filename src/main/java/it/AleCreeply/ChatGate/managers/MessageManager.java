@@ -1,12 +1,11 @@
-package it.AleCreeply.chatGate.managers;
+package it.AleCreeply.ChatGate.managers;
 
-import it.AleCreeply.chatGate.ChatGate;
+import it.AleCreeply.ChatGate.ChatGate;
 import org.bukkit.ChatColor;
-import it.AleCreeply.chatGate.managers.colorManager;
 
 import java.util.Map;
 
-public class messageManager {
+public class MessageManager {
 
     private static ChatGate plugin = ChatGate.getInstance();
 

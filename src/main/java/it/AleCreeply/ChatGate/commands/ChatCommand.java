@@ -1,20 +1,20 @@
-package it.AleCreeply.chatGate.commands;
+package it.AleCreeply.ChatGate.commands;
 
-import it.AleCreeply.chatGate.ChatGate;
+import it.AleCreeply.ChatGate.ChatGate;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import it.AleCreeply.chatGate.models.customChat;
-import it.AleCreeply.chatGate.managers.messageManager;
-import it.AleCreeply.chatGate.managers.chatManager;
+import it.AleCreeply.ChatGate.models.CustomChat;
+import it.AleCreeply.ChatGate.managers.MessageManager;
+import it.AleCreeply.ChatGate.managers.ChatManager;
 import org.bukkit.entity.Player;
 
 import java.util.*;
 
-public class chatCommand implements CommandExecutor, TabCompleter {
+public class ChatCommand implements CommandExecutor, TabCompleter {
 
-    private final chatManager ChatManager = chatManager.getInstance();
+    private final ChatManager ChatManager = it.AleCreeply.ChatGate.managers.ChatManager.getInstance();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -25,43 +25,43 @@ public class chatCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 1) {
-            player.sendMessage(messageManager.getMessage("usage"));
+            player.sendMessage(MessageManager.getMessage("usage"));
             return true;
         }
 
         String chatId = args[0].toLowerCase();
 
-        customChat chat = ChatGate.getInstance().getChats().get(chatId);
+        CustomChat chat = ChatGate.getInstance().getChats().get(chatId);
         if (chat == null) {
             Map<String, String> placeholders = new HashMap<>();
             placeholders.put("%chat%", args[0]);
-            String msg = messageManager.getMessage("chat-not-found", placeholders);
+            String msg = MessageManager.getMessage("chat-not-found", placeholders);
             player.sendMessage(msg);
             return true;
         }
 
         String permission = "chatgate.chats." + chatId;
         if (!player.hasPermission(permission)) {
-            player.sendMessage(messageManager.getMessage("no-permission"));
+            player.sendMessage(MessageManager.getMessage("no-permission"));
             return true;
         }
 
         if (args.length > 1) {
             String message = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
-            chatManager.getInstance().sendChatMessage(chat, player, message);
+            it.AleCreeply.ChatGate.managers.ChatManager.getInstance().sendChatMessage(chat, player, message);
             return true;
         }
 
-        boolean toggled = chatManager.getInstance().toggleChat(player, chat);
+        boolean toggled = it.AleCreeply.ChatGate.managers.ChatManager.getInstance().toggleChat(player, chat);
         if (toggled) {
             Map<String, String> placeholders = new HashMap<>();
             placeholders.put("%chat%", chat.getDisplayName());
-            String msg = messageManager.getMessage("chat-enabled", placeholders);
+            String msg = MessageManager.getMessage("chat-enabled", placeholders);
             player.sendMessage(msg);
         } else {
             Map<String, String> placeholders = new HashMap<>();
             placeholders.put("%chat%", chat.getDisplayName());
-            String msg = messageManager.getMessage("chat-disabled", placeholders);
+            String msg = MessageManager.getMessage("chat-disabled", placeholders);
             player.sendMessage(msg);
         }
 

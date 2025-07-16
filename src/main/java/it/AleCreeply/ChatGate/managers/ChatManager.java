@@ -1,7 +1,7 @@
-package it.AleCreeply.chatGate.managers;
+package it.AleCreeply.ChatGate.managers;
 
-import it.AleCreeply.chatGate.models.customChat;
-import it.AleCreeply.chatGate.ChatGate;
+import it.AleCreeply.ChatGate.models.CustomChat;
+import it.AleCreeply.ChatGate.ChatGate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -9,17 +9,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class chatManager {
+public class ChatManager {
 
-    private static final chatManager instance = new chatManager();
+    private static final ChatManager instance = new ChatManager();
 
-    public static chatManager getInstance() {
+    public static ChatManager getInstance() {
         return instance;
     }
 
     private final Map<UUID, String> toggledChats = new HashMap<>();
 
-    public boolean toggleChat(Player player, customChat chat) {
+    public boolean toggleChat(Player player, CustomChat chat) {
         UUID uuid = player.getUniqueId();
         String current = toggledChats.get(uuid);
 
@@ -36,15 +36,15 @@ public class chatManager {
         return toggledChats.containsKey(player.getUniqueId());
     }
 
-    public customChat getToggledChat(Player player) {
+    public CustomChat getToggledChat(Player player) {
         String chatId = toggledChats.get(player.getUniqueId());
         if (chatId == null) return null;
 
         return ChatGate.getInstance().getChats().get(chatId);
     }
 
-    public void sendChatMessage(customChat chat, Player sender, String message) {
-        String formatted = colorManager.color(chat.getFormat())
+    public void sendChatMessage(CustomChat chat, Player sender, String message) {
+        String formatted = ColorManager.color(chat.getFormat())
                 .replace("%player%", sender.getName())
                 .replace("%message%", message);
 
