@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import it.AleCreeply.ChatGate.models.CustomChat;
 import it.AleCreeply.ChatGate.commands.ChatCommand;
 import it.AleCreeply.ChatGate.listeners.ChatListener;
-import it.AleCreeply.ChatGate.placeholders.PlaceholderapiExpansion;
+import it.AleCreeply.ChatGate.placeholders.PlaceholderAPIExpansion;
 import it.AleCreeply.ChatGate.commands.ChatGateCommand;
 
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public final class ChatGate extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            new PlaceholderapiExpansion().register();
+            new PlaceholderAPIExpansion().register();
             getLogger().info("PlaceholderAPI hook registered");
         } else {
             getLogger().warning("Placeholder hook not registered");
