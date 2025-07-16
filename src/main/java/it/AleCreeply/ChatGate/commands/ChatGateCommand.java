@@ -1,6 +1,7 @@
 package it.AleCreeply.ChatGate.commands;
 
 import it.AleCreeply.ChatGate.ChatGate;
+import it.AleCreeply.ChatGate.managers.MessageManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -30,24 +31,24 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
         switch (sub) {
             case "reload" -> {
                 if (!sender.hasPermission("chatgate.reload")) {
-                    sender.sendMessage(ChatColor.RED + "❌ Non hai il permesso per usare questo comando.");
+                    sender.sendMessage(MessageManager.getMessage("no-permission"));
                     return true;
                 }
 
                 ChatGate.getInstance().reloadConfig();
                 ChatGate.getInstance().loadChats();
-                sender.sendMessage(ChatColor.GREEN + "✔️ Config ricaricato con successo!");
+                sender.sendMessage(MessageManager.getMessage("config-reloaded"));
                 return true;
             }
 
             case "create" -> {
                 if (!sender.hasPermission("chatgate.create")) {
-                    sender.sendMessage(ChatColor.RED + "Non hai il permesso per creare una chat.");
+                    sender.sendMessage(MessageManager.getMessage("no-permission"));
                     return true;
                 }
 
                 if (!(sender instanceof Player player)) {
-                    sender.sendMessage(ChatColor.RED + "Solo i player possono eseguire questo comando.");
+                    sender.sendMessage("§cOnly players can use this command");
                     return true;
                 }
 
@@ -104,7 +105,7 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                     return true;
                 }
 
-                config.set("chats." + id, null); // elimina dal config
+                config.set("chats." + id, null);
                 ChatGate.getInstance().saveConfig();
                 ChatGate.getInstance().loadChats();
 
