@@ -20,8 +20,7 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.YELLOW + "ChatGate Plugin by Alessandro");
-            sender.sendMessage(ChatColor.GRAY + "Usa /chatgate reload per ricaricare la config.");
+            sender.sendMessage("§cUnknown command. Use /chatgate help");
             return true;
         }
 
@@ -52,15 +51,14 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                 }
 
                 if (args.length < 4) {
-                    sender.sendMessage(ChatColor.RED + "Utilizzo corretto:");
-                    sender.sendMessage(ChatColor.YELLOW + "/chatgate create <id> <display-name> <format>");
+                    sender.sendMessage(MessageManager.getMessage("usage"));
                     return true;
                 }
 
                 String id = args[1].toLowerCase();
 
                 if (ChatGate.getInstance().getChats().containsKey(id)) {
-                    sender.sendMessage(ChatColor.RED + "Esiste già una chat con ID '" + id + "'.");
+                    sender.sendMessage("§cThere is already a chat called " + id);
                     return true;
                 }
 
@@ -80,18 +78,18 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                 ChatGate.getInstance().saveConfig();
                 ChatGate.getInstance().loadChats();
 
-                sender.sendMessage(ChatColor.GREEN + "Chat '" + id + "' creata e caricata con successo!");
+                sender.sendMessage("§aYou have successfully created the chat " + id);
                 return true;
             }
 
             case "delete" -> {
                 if (!sender.hasPermission("chatgate.delete")) {
-                    sender.sendMessage(ChatColor.RED + "Non hai il permesso per eliminare una chat.");
+                    sender.sendMessage(MessageManager.getMessage("no-permission"));
                     return true;
                 }
 
                 if (args.length < 2) {
-                    sender.sendMessage(ChatColor.RED + "Uso corretto: /chatgate delete <id>");
+                    sender.sendMessage(MessageManager.getMessage("usage"));
                     return true;
                 }
 
@@ -100,7 +98,7 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                 FileConfiguration config = ChatGate.getInstance().getConfig();
 
                 if (!config.contains("chats." + id)) {
-                    sender.sendMessage(ChatColor.RED + "Non esiste nessuna chat con ID '" + id + "'.");
+                    sender.sendMessage("§cThere is no chat called " + id);
                     return true;
                 }
 
@@ -108,21 +106,24 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                 ChatGate.getInstance().saveConfig();
                 ChatGate.getInstance().loadChats();
 
-                sender.sendMessage(ChatColor.GREEN + "Chat '" + id + "' eliminata con successo!");
+                sender.sendMessage("§aYou have successfully deleted the chat " + id);
                 return true;
             }
 
             case "help" -> {
-                sender.sendMessage(ChatColor.YELLOW + "Comandi disponibili:");
-                sender.sendMessage(ChatColor.GRAY + " - /chatgate reload");
-                sender.sendMessage(ChatColor.GRAY + " - /chatgate create <id> <display-name> <format>");
-                sender.sendMessage(ChatColor.GRAY + " - /chatgate delete <id>");
-                sender.sendMessage(ChatColor.GRAY + " - /chatgate help");
+                sender.sendMessage("&r");
+                sender.sendMessage(" §d§lCHATGATE §r§8| §7By AleCreeply");
+                sender.sendMessage("&r");
+                sender.sendMessage(" §8» §e/chatgate reload");
+                sender.sendMessage(" §8» §e/chatgate create <id> <display-name> <format>");
+                sender.sendMessage(" §8» §e/chatgate delete <id>");
+                sender.sendMessage(" §8» §e/chatgate help");
+                sender.sendMessage("&r");
                 return true;
             }
 
             default -> {
-                sender.sendMessage(ChatColor.RED + "Comando sconosciuto. Usa /chatgate help");
+                sender.sendMessage("§cUnknown command. Use /chatgate help");
                 return true;
             }
         }
