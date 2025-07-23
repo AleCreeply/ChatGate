@@ -1,6 +1,7 @@
 package it.AleCreeply.ChatGate.placeholders;
 
 import it.AleCreeply.ChatGate.managers.ChatManager;
+import it.AleCreeply.ChatGate.managers.MessageManager;
 import it.AleCreeply.ChatGate.models.CustomChat;
 import it.AleCreeply.ChatGate.managers.ColorManager;
 
@@ -42,7 +43,7 @@ public class PlaceholderAPIExpansion extends PlaceholderExpansion {
         if (identifier.equalsIgnoreCase("chat_displayname")) {
             CustomChat chat = ChatManager.getInstance().getToggledChat(player);
 
-            if (chat == null) return "Nessuna";
+            if (chat == null) return MessageManager.getMessage("none-chat-placeholder");
 
             return ColorManager.color(chat.getDisplayName());
         }

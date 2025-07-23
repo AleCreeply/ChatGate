@@ -30,6 +30,8 @@ messages:
 
   config-reloaded: "%prefix% &aConfig reloaded successfully"
 
+  none-chat-placeholder: "None"
+
 settings:
   log-chat: true
 
