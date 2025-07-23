@@ -48,7 +48,7 @@ public class ChatManager {
         placeholders.put("%message%", message);
         placeholders.put("%player%", sender.getName());
 
-        String formatted = MessageManager.getMessage(sender, "chat-formats." + chat.getId(), placeholders);
+        String formatted = MessageManager.getMessage(sender, "chats." + chat.getId() + ".format", placeholders);
 
         for (Player target : Bukkit.getOnlinePlayers()) {
             if (target.hasPermission("chatgate.chats." + chat.getId())) {

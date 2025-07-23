@@ -13,15 +13,13 @@ public class MessageManager {
 
     private static ChatGate plugin = ChatGate.getInstance();
 
-    // Messaggio base senza contesto player
     public static String getMessage(String key) {
-        String msg = plugin.getConfig().getString("messages." + key);
+        String msg = plugin.getConfig().getString(key);
         if (msg == null) return "§cMessaggio mancante: " + key;
         msg = msg.replace("%prefix%", getPrefix());
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    // Messaggio con placeholder statici personalizzati (es. %arg%)
     public static String getMessage(String key, Map<String, String> placeholders) {
         String msg = getMessage(key);
         for (Map.Entry<String, String> entry : placeholders.entrySet()) {
@@ -30,20 +28,17 @@ public class MessageManager {
         return msg;
     }
 
-    // Nuovo metodo: messaggio con supporto PlaceholderAPI e contesto sender
     public static String getMessage(CommandSender sender, String key) {
-        String msg = plugin.getConfig().getString("messages." + key);
+        String msg = plugin.getConfig().getString(key);
         if (msg == null) return "§cMessage missing: " + key;
 
         msg = msg.replace("%prefix%", getPrefix());
-        // se è un Player, applica PlaceholderAPI, altrimenti no
         if (sender instanceof Player && Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             msg = PlaceholderAPI.setPlaceholders((Player) sender, msg);
         }
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    // Overload con sender e placeholder statici extra (tipo %arg%)
     public static String getMessage(CommandSender sender, String key, Map<String, String> placeholders) {
         String msg = getMessage(sender, key);
         for (Map.Entry<String, String> entry : placeholders.entrySet()) {
