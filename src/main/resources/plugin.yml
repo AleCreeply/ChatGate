@@ -4,20 +4,43 @@ main: it.AleCreeply.ChatGate.ChatGate
 api-version: '1.21'
 author: 'AleCreeply'
 softdepend: [PlaceholderAPI]
-description: >
-  ChatGate is a powerful and customizable chat manager plugin that allows server admins 
-  to create multiple permission-based chat channels with support for HEX colors, 
-  PlaceholderAPI, and toggleable chat modes. Easily configure chat formats, names, 
-  permissions, and messages through the config.yml. 
-  Perfect for roleplay servers, staff chats, VIP-only channels and more.
+description: A modular chat management plugin supporting multiple configurable chats, hex colors and more!
+website: https://github.com/AleCreeply/ChatGate
+
 commands:
   chat:
     aliases: [c]
     description: To do
     usage: /chat <name> [message]
+
   chatgate:
-    description: To do
-    usage: /chatgate
-    permission: chatgate.reload
+    description: Main command for ChatGate management.
+    usage: /chatgate [reload|create|delete|help]
+    permission: chatgate.use
     aliases:
       - cg
+
+permissions:
+  chatgate.use:
+    description: Allow use of /chatgate base command.
+    default: true
+
+  chatgate.reload:
+    description: Allow reloading the plugin configuration.
+    default: op
+
+  chatgate.create:
+    description: Allow creating new chats via command.
+    default: op
+
+  chatgate.delete:
+    description: Allows deleting existing chats via command.
+    default: op
+
+  chatgate.chats.*:
+    description: Access to all chats.
+    default: op
+
+  chatgate.chat.example:
+    description: Access to a specific chat named "example"
+    default: false
