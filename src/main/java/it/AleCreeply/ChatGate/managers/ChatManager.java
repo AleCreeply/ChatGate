@@ -2,6 +2,7 @@ package it.AleCreeply.ChatGate.managers;
 
 import it.AleCreeply.ChatGate.models.CustomChat;
 import it.AleCreeply.ChatGate.ChatGate;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -44,17 +45,20 @@ public class ChatManager {
     }
 
     public void sendChatMessage(CustomChat chat, Player sender, String message) {
-        String formatPath = "chats." + chat.getId() + ".format";
+        String format = chat.getFormat();
 
-        Map<String, String> placeholders = new HashMap<>();
-        placeholders.put("%player%", sender.getName());
-        placeholders.put("%message%", message);
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            format = PlaceholderAPI.setPlaceholders(sender, format);
+        }
 
-        String formatted = MessageManager.getMessage(sender, formatPath, placeholders);
+        format = format.replace("%player%", sender.getName())
+                .replace("%message%", message);
+
+        format = ColorManager.color(format);
 
         for (Player target : Bukkit.getOnlinePlayers()) {
             if (target.hasPermission("chatgate.chats." + chat.getId())) {
-                target.sendMessage(formatted);
+                target.sendMessage(format);
             }
         }
 
