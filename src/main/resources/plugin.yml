@@ -21,10 +21,6 @@ commands:
       - cg
 
 permissions:
-  chatgate.use:
-    description: Allow use of /chatgate base command.
-    default: true
-
   chatgate.reload:
     description: Allow reloading the plugin configuration.
     default: op
@@ -40,7 +36,3 @@ permissions:
   chatgate.chats.*:
     description: Access to all chats.
     default: op
-
-  chatgate.chat.example:
-    description: Access to a specific chat named "example"
-    default: false
