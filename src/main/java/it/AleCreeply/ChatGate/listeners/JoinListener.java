@@ -20,7 +20,7 @@ public class JoinListener implements Listener {
         Player p = e.getPlayer();
         UpdateChecker checker = plugin.getUpdateChecker();
 
-        if (p.isOp() && checker.isUpdateAvailable()) {
+        if (p.hasPermission("chatgate.update") && checker.isUpdateAvailable()) {
             p.sendMessage(" ");
             p.sendMessage(" §e✱ §7An update is avabile for §f" + plugin.getName() + "§r§7!");
             p.sendMessage(" §8» §7Latest Version: §f" + checker.getLatestVersion());
