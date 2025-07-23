@@ -51,7 +51,7 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                 }
 
                 if (args.length < 4) {
-                    sender.sendMessage(MessageManager.getMessage("usage"));
+                    sender.sendMessage(MessageManager.getUsage(sender, label));
                     return true;
                 }
 
@@ -89,7 +89,7 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                 }
 
                 if (args.length < 2) {
-                    sender.sendMessage(MessageManager.getMessage("usage"));
+                    sender.sendMessage(MessageManager.getUsage(sender, label));
                     return true;
                 }
 
