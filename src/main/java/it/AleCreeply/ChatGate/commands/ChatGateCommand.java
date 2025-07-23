@@ -11,9 +11,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ChatGateCommand implements CommandExecutor, TabCompleter {
 
@@ -131,29 +130,25 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
 
         if (args.length == 1) {
-            List<String> subs = List.of("reload", "help", "create", "delete");
-            return subs.stream()
-                    .filter(s -> s.startsWith(args[0].toLowerCase()))
-                    .collect(Collectors.toList());
+            completions.addAll(Arrays.asList("create", "delete", "reload", "help"));
+            return completions;
         }
 
-        if (args.length == 2) {
-            String sub = args[0].toLowerCase();
-
-            if (sub.equals("delete")) {
-                List<String> chats = new ArrayList<>(ChatGate.getInstance().getChats().keySet());
-                return chats.stream()
-                        .filter(c -> c.startsWith(args[1].toLowerCase()))
-                        .collect(Collectors.toList());
-            }
-
-            if (sub.equals("create")) {
-                return Collections.emptyList();
+        if (args[0].equalsIgnoreCase("create")) {
+            switch (args.length) {
+                case 2 -> completions.add("<id>");
+                case 3 -> completions.add("<displayName>");
+                case 4 -> completions.add("<format>");
             }
         }
 
-        return Collections.emptyList();
+        if (args[0].equalsIgnoreCase("delete") && args.length == 2) {
+            completions.addAll(ChatGate.getInstance().getChats().keySet());
+        }
+
+        return completions;
     }
 }
