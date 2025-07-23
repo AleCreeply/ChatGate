@@ -1,5 +1,7 @@
 package it.AleCreeply.ChatGate;
 
+import it.AleCreeply.ChatGate.listeners.JoinListener;
+import it.AleCreeply.ChatGate.listeners.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,6 +17,7 @@ import java.util.Map;
 public final class ChatGate extends JavaPlugin {
 
     private static ChatGate instance;
+    private UpdateChecker updateChecker;
     private final Map<String, CustomChat> chats = new HashMap<>();
 
     @Override
@@ -23,6 +26,11 @@ public final class ChatGate extends JavaPlugin {
         instance = this;
         saveDefaultConfig();
         loadChats();
+
+        updateChecker = new UpdateChecker(this, 1234);
+        updateChecker.checkForUpdate();
+
+        getServer().getPluginManager().registerEvents(new JoinListener(this), this);
 
         getCommand("chat").setExecutor(new ChatCommand());
         getCommand("chat").setTabCompleter(new ChatCommand());
@@ -65,10 +73,7 @@ public final class ChatGate extends JavaPlugin {
         return instance;
     }
 
-
-
-    @Override
-    public void onDisable() {
-
+    public UpdateChecker getUpdateChecker() {
+        return updateChecker;
     }
 }
