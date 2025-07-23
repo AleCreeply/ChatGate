@@ -111,14 +111,14 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
             }
 
             case "help" -> {
-                sender.sendMessage("&r");
+                sender.sendMessage(" ");
                 sender.sendMessage(" §d§lCHATGATE §r§8| §7By AleCreeply");
-                sender.sendMessage("&r");
+                sender.sendMessage(" ");
                 sender.sendMessage(" §8» §e/chatgate reload");
                 sender.sendMessage(" §8» §e/chatgate create <id> <display-name> <format>");
                 sender.sendMessage(" §8» §e/chatgate delete <id>");
                 sender.sendMessage(" §8» §e/chatgate help");
-                sender.sendMessage("&r");
+                sender.sendMessage(" ");
                 return true;
             }
 
