@@ -44,19 +44,17 @@ public class ChatManager {
     }
 
     public void sendChatMessage(CustomChat chat, Player sender, String message) {
-        Map<String, String> placeholders = new HashMap<>();
-        placeholders.put("%message%", message);
-        placeholders.put("%player%", sender.getName());
+        String formatPath = "chats." + chat.getId() + ".format";
 
-        String formatted = MessageManager.getMessage(sender, "chats." + chat.getId() + ".format", placeholders);
+        Map<String, String> placeholders = new HashMap<>();
+        placeholders.put("%player%", sender.getName());
+        placeholders.put("%message%", message);
+
+        String formatted = MessageManager.getMessage(sender, formatPath, placeholders);
 
         for (Player target : Bukkit.getOnlinePlayers()) {
             if (target.hasPermission("chatgate.chats." + chat.getId())) {
-                String finalMessage = formatted;
-                if (target != sender && Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                    finalMessage = me.clip.placeholderapi.PlaceholderAPI.setPlaceholders(target, formatted);
-                }
-                target.sendMessage(finalMessage);
+                target.sendMessage(formatted);
             }
         }
 
