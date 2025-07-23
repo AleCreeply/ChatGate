@@ -10,7 +10,7 @@ website: https://github.com/AleCreeply/ChatGate
 commands:
   chat:
     aliases: [c]
-    description: To do
+    description: Use configured chats with ChatGate.
     usage: /chat <name> [message]
 
   chatgate:
