@@ -13,15 +13,6 @@ public class MessageManager {
 
     private static ChatGate plugin = ChatGate.getInstance();
 
-    public static String getUsage(CommandSender sender, String commandLabel) {
-        String usageTemplate = ChatGate.getInstance().getConfig().getString("usage");
-        String msg = usageTemplate.replace("%command%", commandLabel);
-        if (sender instanceof Player && Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            msg = PlaceholderAPI.setPlaceholders((Player) sender, msg);
-        }
-        return ColorManager.color(msg);
-    }
-
     public static String getMessage(String key) {
         String msg = plugin.getConfig().getString("messages." + key);
         if (msg == null) return "§cMessaggio mancante: " + key;

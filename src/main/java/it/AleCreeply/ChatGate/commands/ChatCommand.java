@@ -25,7 +25,7 @@ public class ChatCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 1) {
-            player.sendMessage(MessageManager.getUsage(sender, label));
+            player.sendMessage("&cCorrect usage: /chat <chat name>");
             return true;
         }
 

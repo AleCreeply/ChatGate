@@ -51,7 +51,7 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                 }
 
                 if (args.length < 4) {
-                    sender.sendMessage(MessageManager.getUsage(sender, label));
+                    sender.sendMessage("&cCorrect usage: /chat create <chat id> <display name> <format>");
                     return true;
                 }
 
@@ -89,7 +89,7 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
                 }
 
                 if (args.length < 2) {
-                    sender.sendMessage(MessageManager.getUsage(sender, label));
+                    sender.sendMessage("&cCorrect usage: /chat delete <chat id>");
                     return true;
                 }
 
