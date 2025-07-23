@@ -34,9 +34,3 @@ messages:
 
 settings:
   log-chat: true
-
-# --------------------
-#       To do
-# --------------------
-# save-toggle-on-logout: true
-# enable-placeholder-api: true
