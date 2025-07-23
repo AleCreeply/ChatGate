@@ -1,7 +1,7 @@
 name: ChatGate
 version: '1.0'
 main: it.AleCreeply.ChatGate.ChatGate
-api-version: '1.16'
+api-version: '1.21'
 author: 'AleCreeply'
 softdepend: [PlaceholderAPI]
 description: A modular chat management plugin supporting multiple configurable chats, hex colors and more!
