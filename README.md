@@ -22,7 +22,6 @@ Designed for roleplay servers and advanced communities, ChatGate makes in-game c
 |--------|-------------|
 | `/chatgate create <id>` | Creates a new chat channel |
 | `/chatgate delete <id>` | Deletes an existing chat channel |
-| `/chatgate list` | Lists all created channels |
 | `/chatgate reload` | Reloads the plugin configuration |
 | `/chat <message>` | Sends a message in the currently toggled channel |
 | `/chat <channel> <message>` | Sends a message in a specific channel |
