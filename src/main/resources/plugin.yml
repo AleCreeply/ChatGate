@@ -1,5 +1,5 @@
 name: ChatGate
-version: '1.0.1'
+version: '1.1'
 main: it.AleCreeply.ChatGate.ChatGate
 api-version: '1.17'
 author: 'AleCreeply'
