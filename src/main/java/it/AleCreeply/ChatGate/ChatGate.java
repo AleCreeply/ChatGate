@@ -27,7 +27,7 @@ public final class ChatGate extends JavaPlugin {
         saveDefaultConfig();
         loadChats();
 
-        updateChecker = new UpdateChecker(this, 1234);
+        updateChecker = new UpdateChecker(this, 127301);
         updateChecker.checkForUpdate();
 
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
