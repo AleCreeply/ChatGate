@@ -10,7 +10,6 @@ public class ColorManager {
     public static String color(String input) {
         if (input == null) return "";
 
-        // Sostituisce HEX: &#rrggbb → §x§r§r§g§g§b§b
         Matcher matcher = HEX_PATTERN.matcher(input);
         StringBuffer buffer = new StringBuffer();
 
@@ -27,7 +26,6 @@ public class ColorManager {
 
         matcher.appendTail(buffer);
 
-        // Poi traduce anche &a, &b ecc
         return org.bukkit.ChatColor.translateAlternateColorCodes('&', buffer.toString());
     }
 }
