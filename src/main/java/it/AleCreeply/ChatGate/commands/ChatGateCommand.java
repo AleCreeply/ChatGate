@@ -20,7 +20,7 @@ public class ChatGateCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 0) {
-            sender.sendMessage("§cUnknown command. Use /chatgate help");
+            sender.sendMessage("§cUnknown command: Use /chatgate help");
             return true;
         }
 
